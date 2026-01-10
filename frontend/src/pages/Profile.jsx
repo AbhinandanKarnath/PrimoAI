@@ -157,7 +157,7 @@ const Profile = () => {
                 <button
                   type="submit"
                   disabled={updating}
-                  className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="btn btn-primary"
                 >
                   {updating ? 'Updating...' : 'Update Profile'}
                 </button>
@@ -172,7 +172,7 @@ const Profile = () => {
             {!showPasswordForm ? (
               <button
                 onClick={() => setShowPasswordForm(true)}
-                className="btn-secondary"
+                className="btn btn-secondary"
               >
                 Change Password
               </button>
@@ -244,7 +244,7 @@ const Profile = () => {
                   <button
                     type="submit"
                     disabled={updating}
-                    className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="btn btn-primary"
                   >
                     {updating ? 'Updating...' : 'Update Password'}
                   </button>
@@ -254,7 +254,7 @@ const Profile = () => {
                       setShowPasswordForm(false)
                       resetPassword()
                     }}
-                    className="btn-secondary"
+                    className="btn btn-secondary"
                   >
                     Cancel
                   </button>

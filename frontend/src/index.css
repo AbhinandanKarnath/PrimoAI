@@ -1,78 +1,10 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
-body {
+/* body {
   background-color: #f9fafb;
   color: #111827;
-}
-
-/* Button Styles */
-.btn {
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  font-weight: 500;
-  transition: all 0.2s;
-  outline: none;
-  border: none;
-  cursor: pointer;
-}
-
-.btn:focus {
-  box-shadow: 0 0 0 2px #fff, 0 0 0 4px currentColor;
-}
-
-.btn-primary {
-  background-color: #0284c7;
-  color: white;
-}
-
-.btn-primary:hover {
-  background-color: #0369a1;
-}
-
-.btn-primary:focus {
-  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #0ea5e9;
-}
-
-.btn-secondary {
-  background-color: #e5e7eb;
-  color: #1f2937;
-}
-
-.btn-secondary:hover {
-  background-color: #d1d5db;
-}
-
-.btn-secondary:focus {
-  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #9ca3af;
-}
-
-.btn-danger {
-  background-color: #dc2626;
-  color: white;
-}
-
-.btn-danger:hover {
-  background-color: #b91c1c;
-}
-
-.btn-danger:focus {
-  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #ef4444;
-}
-
-/* Input Styles */
-.input {
-  width: 100%;
-  padding: 0.5rem 1rem;
-  border: 1px solid #d1d5db;
-  border-radius: 0.5rem;
-  outline: none;
-  transition: all 0.2s;
-}
-
-.input:focus {
-  box-shadow: 0 0 0 2px #0ea5e9;
-  border-color: #0ea5e9;
-}
+} */
 
 /* Card Styles */
 .card {
@@ -132,6 +64,11 @@ body {
   color: #991b1b;
 }
 
+/* Input Styles */
+.input {
+  width: 100%;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -149,4 +86,4 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: #6b7280;
-} 
+}

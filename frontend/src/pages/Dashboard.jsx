@@ -117,7 +117,7 @@ const Dashboard = () => {
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 px-4 sm:px-0">
-          <div className="card bg-white overflow-hidden shadow hover:shadow-lg transition-shadow">
+          <div className="bg-white rounded-lg p-6 overflow-hidden shadow hover:shadow-lg transition-shadow">
             <div className="flex items-center">
               <div className="flex-shrink-0 bg-primary-500 rounded-md p-3">
                 <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -133,7 +133,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="card bg-white overflow-hidden shadow hover:shadow-lg transition-shadow">
+          <div className="bg-white rounded-lg p-6 overflow-hidden shadow hover:shadow-lg transition-shadow">
             <div className="flex items-center">
               <div className="flex-shrink-0 bg-yellow-500 rounded-md p-3">
                 <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -149,7 +149,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="card bg-white overflow-hidden shadow hover:shadow-lg transition-shadow">
+          <div className="bg-white rounded-lg p-6 overflow-hidden shadow hover:shadow-lg transition-shadow">
             <div className="flex items-center">
               <div className="flex-shrink-0 bg-blue-500 rounded-md p-3">
                 <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -165,7 +165,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="card bg-white overflow-hidden shadow hover:shadow-lg transition-shadow">
+          <div className="bg-white rounded-lg p-6 overflow-hidden shadow hover:shadow-lg transition-shadow">
             <div className="flex items-center">
               <div className="flex-shrink-0 bg-green-500 rounded-md p-3">
                 <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -184,7 +184,7 @@ const Dashboard = () => {
 
         {/* Recent Tasks */}
         <div className="mt-8 px-4 sm:px-0">
-          <div className="card">
+          <div className="bg-white rounded-lg shadow-sm p-6">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-xl font-bold text-gray-900">Recent Tasks</h2>
               <Link to="/tasks" className="text-primary-600 hover:text-primary-700 font-medium text-sm">
@@ -200,7 +200,7 @@ const Dashboard = () => {
                 <h3 className="mt-2 text-sm font-medium text-gray-900">No tasks</h3>
                 <p className="mt-1 text-sm text-gray-500">Get started by creating a new task.</p>
                 <div className="mt-6">
-                  <Link to="/tasks/create" className="btn-primary">
+                  <Link to="/tasks/create" className="btn btn-primary">
                     Create Task
                   </Link>
                 </div>
@@ -226,7 +226,7 @@ const Dashboard = () => {
                             {task.priority}
                           </span>
                           {task.dueDate && (
-                            <span className="badge bg-purple-100 text-purple-800">
+                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
                               Due: {new Date(task.dueDate).toLocaleDateString()}
                             </span>
                           )}
@@ -238,14 +238,14 @@ const Dashboard = () => {
                           <div className="flex space-x-2">
                             <button
                               onClick={() => handleToggleComplete(task)}
-                              className="btn-primary px-3 py-1 text-sm"
+                              className="btn btn-primary btn-sm"
                               title="Mark as Complete"
                             >
                               ✓ Complete
                             </button>
                             <button
                               onClick={() => handleToggleCancel(task)}
-                              className="btn-danger px-3 py-1 text-sm"
+                              className="btn btn-error btn-sm"
                               title="Cancel Task"
                             >
                               ✗ Cancel
@@ -257,7 +257,7 @@ const Dashboard = () => {
                         {task.status === 'completed' && (
                           <button
                             onClick={() => handleRenewTask(task)}
-                            className="btn-primary px-3 py-1 text-sm"
+                            className="btn btn-primary btn-sm"
                             title="Renew Task"
                           >
                             🔄 Renew

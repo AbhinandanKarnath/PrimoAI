@@ -33,7 +33,11 @@ const Register = () => {
       toast.success('Registration successful!')
       navigate('/dashboard')
     } catch (error) {
-      toast.error(error.response?.data?.message || 'Registration failed')
+      const errorMessage = error.response?.data?.message || 
+                          error.response?.data?.errors?.[0]?.message ||
+                          error.message || 
+                          'Registration failed. Please try again.'
+      toast.error(errorMessage)
     } finally {
       setLoading(false)
     }
@@ -91,10 +95,10 @@ const Register = () => {
                 placeholder="john@example.com"
                 {...register('email', {
                   required: 'Email is required',
-                //   pattern: {
-                //     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                //     message: 'Invalid email address',
-                //   },
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: 'Invalid email address',
+                  },
                 })}
               />
               {errors.email && (
@@ -118,10 +122,10 @@ const Register = () => {
                     value: 6,
                     message: 'Password must be at least 6 characters',
                   },
-                //   pattern: {
-                //     value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
-                //     message: 'Password must contain uppercase, lowercase, and number',
-                //   },
+                  pattern: {
+                    value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
+                    message: 'Password must contain uppercase, lowercase, and number',
+                  },
                 })}
               />
               {errors.password && (
@@ -139,10 +143,10 @@ const Register = () => {
                 autoComplete="new-password"
                 className={`input mt-1 ${errors.confirmPassword ? 'border-red-500' : ''}`}
                 placeholder="••••••••"
-                // {...register('confirmPassword', {
-                //   required: 'Please confirm your password',
-                //   validate: (value) => value === password || 'Passwords do not match',
-                // })}
+                {...register('confirmPassword', {
+                  required: 'Please confirm your password',
+                  validate: (value) => value === password || 'Passwords do not match',
+                })}
               />
               {errors.confirmPassword && (
                 <p className="mt-1 text-sm text-red-600">{errors.confirmPassword.message}</p>
@@ -154,7 +158,7 @@ const Register = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full btn btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? 'Creating account...' : 'Create account'}
             </button>

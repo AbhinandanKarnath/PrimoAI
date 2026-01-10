@@ -31,7 +31,11 @@ const Login = () => {
       navigate('/dashboard', { replace: true })
     } catch (error) {
       console.error('Login error:', error)
-      toast.error(error.response?.data?.message || 'Login failed')
+      const errorMessage = error.response?.data?.message || 
+                          error.response?.data?.errors?.[0]?.message ||
+                          error.message || 
+                          'Login failed. Please try again.'
+      toast.error(errorMessage)
     } finally {
       setLoading(false)
     }
@@ -100,7 +104,7 @@ const Login = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full btn btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? 'Signing in...' : 'Sign in'}
             </button>

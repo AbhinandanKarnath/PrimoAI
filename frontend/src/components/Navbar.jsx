@@ -25,8 +25,9 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
-              <Link to="/dashboard" className="text-2xl font-bold text-primary-600">
-                Primo
+              <Link to="/dashboard" className="flex items-center space-x-2">
+                <img src="/primo.png" alt="Primo Logo" className="h-12 w-12" />
+                <span className="text-2xl font-bold text-primary-600 text-blue-900">Primo</span>
               </Link>
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">

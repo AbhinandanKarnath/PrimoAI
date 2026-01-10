@@ -65,7 +65,7 @@ const CreateTask = () => {
               </label>
               <input
                 type="text"
-                className={`input ${errors.title ? 'border-red-500' : ''}`}
+                className={`input input-bordered w-full ${errors.title ? 'input-error' : ''}`}
                 placeholder="Enter task title"
                 {...register('title', {
                   required: 'Title is required',
@@ -85,7 +85,7 @@ const CreateTask = () => {
               </label>
               <textarea
                 rows="4"
-                className={`input ${errors.description ? 'border-red-500' : ''}`}
+                className={`textarea textarea-bordered w-full ${errors.description ? 'textarea-error' : ''}`}
                 placeholder="Enter task description"
                 {...register('description', {
                   maxLength: { value: 500, message: 'Description must not exceed 500 characters' },
@@ -102,7 +102,7 @@ const CreateTask = () => {
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Status
                 </label>
-                <select className="input" {...register('status')}>
+                <select className="select select-bordered w-full" {...register('status')}>
                   <option value="pending">Pending</option>
                   <option value="in-progress">In Progress</option>
                   {/* <option value="completed">Completed</option> */}
@@ -114,7 +114,7 @@ const CreateTask = () => {
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Priority
                 </label>
-                <select className="input" {...register('priority')}>
+                <select className="select select-bordered w-full" {...register('priority')}>
                   <option value="low">Low</option>
                   <option value="medium">Medium</option>
                   <option value="high">High</option>
@@ -130,7 +130,7 @@ const CreateTask = () => {
               </label>
               <input
                 type="date"
-                className="input"
+                className="input input-bordered w-full"
                 {...register('dueDate')}
               />
             </div>
@@ -140,14 +140,14 @@ const CreateTask = () => {
               <button
                 type="button"
                 onClick={() => navigate('/tasks')}
-                className="btn-secondary"
+                className="btn btn-secondary"
                 disabled={loading}
               >
                 Cancel
               </button>
               <button
                 type="submit"
-                className="btn-primary"
+                className="btn btn-primary"
                 disabled={loading}
               >
                 {loading ? 'Creating...' : 'Create Task'}

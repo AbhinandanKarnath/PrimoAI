@@ -10,7 +10,7 @@ const NotFound = () => {
           Sorry, we couldn't find the page you're looking for.
         </p>
         <div className="mt-6">
-          <Link to="/dashboard" className="btn-primary">
+          <Link to="/dashboard" className="btn btn-primary">
             Go back to dashboard
           </Link>
         </div>

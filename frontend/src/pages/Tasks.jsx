@@ -183,7 +183,7 @@ const Tasks = () => {
           {/* Header */}
           <div className="flex justify-between items-center mb-6">
             <h1 className="text-3xl font-bold text-gray-900">Tasks</h1>
-            <Link to="/tasks/create" className="btn-primary">
+            <Link to="/tasks/create" className="btn btn-primary">
               + Create Task
             </Link>
           </div>
@@ -194,12 +194,12 @@ const Tasks = () => {
               <input
                 type="text"
                 placeholder="Search tasks..."
-                className="input"
+                className="input input-bordered w-full"
                 value={filters.search}
                 onChange={(e) => handleFilterChange('search', e.target.value)}
               />
               <select
-                className="input"
+                className="select select-bordered w-full"
                 value={filters.status}
                 onChange={(e) => handleFilterChange('status', e.target.value)}
               >
@@ -210,7 +210,7 @@ const Tasks = () => {
                 <option value="cancelled">Cancelled</option>
               </select>
               <select
-                className="input"
+                className="select select-bordered w-full"
                 value={filters.priority}
                 onChange={(e) => handleFilterChange('priority', e.target.value)}
               >
@@ -222,7 +222,7 @@ const Tasks = () => {
               </select>
               <button
                 onClick={() => setFilters({ search: '', status: '', priority: '', page: 1, limit: 10 })}
-                className="btn-secondary"
+                className="btn btn-secondary"
               >
                 Clear Filters
               </button>
@@ -274,14 +274,14 @@ const Tasks = () => {
                         <div className="flex space-x-2">
                           <button
                             onClick={() => handleToggleComplete(task)}
-                            className="btn-primary px-3 py-1 text-sm"
+                            className="btn btn-primary btn-sm"
                             title="Mark as Complete"
                           >
                             ✓ Complete
                           </button>
                           <button
                             onClick={() => handleToggleCancel(task)}
-                            className="btn-danger px-3 py-1 text-sm"
+                            className="btn btn-error btn-sm"
                             title="Cancel Task"
                           >
                             ✗ Cancel
@@ -293,7 +293,7 @@ const Tasks = () => {
                       {task.status === 'completed' && (
                         <button
                           onClick={() => handleRenewTask(task)}
-                          className="btn-primary px-3 py-1 text-sm"
+                          className="btn btn-primary btn-sm"
                           title="Renew Task"
                         >
                           🔄 Renew
@@ -304,13 +304,13 @@ const Tasks = () => {
                       <div className="flex space-x-2">
                         <button
                           onClick={() => handleEditTask(task)}
-                          className="btn-secondary px-3 py-1 text-sm"
+                          className="btn btn-secondary btn-sm"
                         >
                           Edit
                         </button>
                         <button
                           onClick={() => handleDeleteTask(task._id)}
-                          className="btn-danger px-3 py-1 text-sm"
+                          className="btn btn-error btn-sm"
                         >
                           Delete
                         </button>
@@ -328,7 +328,7 @@ const Tasks = () => {
               <button
                 onClick={() => handlePageChange(pagination.page - 1)}
                 disabled={pagination.page === 1}
-                className="btn-secondary disabled:opacity-50 disabled:cursor-not-allowed"
+                className="btn btn-secondary btn-sm"
               >
                 Previous
               </button>
@@ -338,7 +338,7 @@ const Tasks = () => {
               <button
                 onClick={() => handlePageChange(pagination.page + 1)}
                 disabled={!pagination.hasMore}
-                className="btn-secondary disabled:opacity-50 disabled:cursor-not-allowed"
+                className="btn btn-secondary btn-sm"
               >
                 Next
               </button>
@@ -372,10 +372,11 @@ const Tasks = () => {
 
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">Title*</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Title*</label>
                       <input
                         type="text"
-                        className={`input mt-1 ${errors.title ? 'border-red-500' : ''}`}
+                        className={`input input-bordered w-full ${errors.title ? 'input-error' : ''}`}
+                        placeholder="Enter task title"
                         {...register('title', {
                           required: 'Title is required',
                           minLength: { value: 3, message: 'Title must be at least 3 characters' },
@@ -386,10 +387,11 @@ const Tasks = () => {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">Description</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
                       <textarea
                         rows="3"
-                        className="input mt-1"
+                        className="textarea textarea-bordered w-full"
+                        placeholder="Enter task description (optional)"
                         {...register('description', {
                           maxLength: { value: 500, message: 'Description must not exceed 500 characters' },
                         })}
@@ -399,8 +401,8 @@ const Tasks = () => {
 
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700">Status</label>
-                        <select className="input mt-1" {...register('status')}>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                        <select className="select select-bordered w-full" {...register('status')}>
                           <option value="pending">Pending</option>
                           <option value="in-progress">In Progress</option>
                           <option value="completed">Completed</option>
@@ -409,8 +411,8 @@ const Tasks = () => {
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-gray-700">Priority</label>
-                        <select className="input mt-1" {...register('priority')}>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Priority</label>
+                        <select className="select select-bordered w-full" {...register('priority')}>
                           <option value="low">Low</option>
                           <option value="medium">Medium</option>
                           <option value="high">High</option>
@@ -420,10 +422,10 @@ const Tasks = () => {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">Due Date</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Due Date</label>
                       <input
                         type="date"
-                        className="input mt-1"
+                        className="input input-bordered w-full"
                         {...register('dueDate')}
                       />
                     </div>
@@ -431,13 +433,13 @@ const Tasks = () => {
                 </div>
 
                 <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                  <button type="submit" className="btn-primary w-full sm:w-auto sm:ml-3">
+                  <button type="submit" className="btn btn-primary w-full sm:w-auto sm:ml-3">
                     {editingTask ? 'Update' : 'Create'}
                   </button>
                   <button
                     type="button"
                     onClick={() => setShowModal(false)}
-                    className="btn-secondary w-full sm:w-auto mt-3 sm:mt-0"
+                    className="btn btn-secondary w-full sm:w-auto mt-3 sm:mt-0"
                   >
                     Cancel
                   </button>
