@@ -2,6 +2,12 @@
 
 A full-stack web application with JWT authentication, user management, and task CRUD operations.
 
+## 🚀 Quick Deploy
+
+**Want to deploy right now?** → Read [QUICKSTART_DEPLOY.md](./QUICKSTART_DEPLOY.md) (15 minutes to live!)
+
+**Need detailed deployment options?** → Read [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md)
+
 ## 🚀 Tech Stack
 
 ### Frontend

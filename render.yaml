@@ -1,0 +1,48 @@
+# Render Blueprint for Primo Application
+# This file allows you to deploy both services with one click on Render
+
+services:
+  # Backend API Service
+  - type: web
+    name: primo-backend
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: MONGODB_URI
+        sync: false  # Set manually in Render dashboard
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRE
+        value: 7d
+      - key: CLIENT_URL
+        sync: false  # Set manually after frontend deployment
+    healthCheckPath: /api/health
+
+  # Frontend Static Site
+  - type: web
+    name: primo-frontend
+    env: static
+    region: oregon
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: ./frontend/dist
+    envVars:
+      - key: VITE_API_URL
+        sync: false  # Set to backend URL after backend deployment
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
